@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Rede Social</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header ul li {
+            float: right;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header ul li a:hover {
+            color: #0779e4;
+        }
+        #posts {
+            margin: 20px 0;
+        }
+        #posts div {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mini Rede Social</h1>
+            <ul>
+                <li><a href="#" id="logout-btn">Logout</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="post-form">
+            <h2>Criar uma nova postagem</h2>
+            <textarea id="post-content" rows="5" placeholder="Escreva algo..."></textarea><br>
+            <button id="post-btn">Postar</button>
+        </div>
+
+        <div id="posts">
+            <!-- Posts aparecerão aqui -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('post-btn').addEventListener('click', function() {
+            const content = document.getElementById('post-content').value;
+
+            if (content.trim() !== '') {
+                // Aqui é onde o código para enviar o post para o backend ficaria
+                const post = {
+                    content: content,
+                    author: 'Usuário Exemplo',
+                    date: new Date().toLocaleString()
+                };
+
+                // Simulação de postagem na página
+                const postDiv = document.createElement('div');
+                postDiv.innerHTML = `<p>${post.author} - ${post.date}</p><p>${post.content}</p>`;
+                document.getElementById('posts').appendChild(postDiv);
+
+                // Limpar a área de texto
+                document.getElementById('post-content').value = '';
+            } else {
+                alert('Por favor, escreva algo antes de postar.');
+            }
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            // Aqui iria o código para realizar logout
+            alert('Logout realizado com sucesso!');
+        });
+    </script>
+</body>
+</html>
